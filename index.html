@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Кванториум</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+<!-- Latest compiled and minified JavaScript -->
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/hakaton.js"></script>
+<script></script>
+<body>
+<!--<img class="bg" src="img/bg.jpg" />-->
+
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#"><img src="img/favicon.png" height="19px"/> Кванториум</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Тестирование</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Справочники <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Ученики</a></li>
+                    <li><a href="#">Преподаватели</a></li>
+                    <li><a href="#">Цели</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div><!-- /.navbar-collapse -->
+</nav>
+
+<!--   NAVBAR ------------------------------------------------------------------------ N
+-->
+<div class="board">
+    <div class="menu menu1" style="display: none">
+        <div class="item"><img src="img/ment.png"></div>
+        <div class="item"><img src="img/esculap.png"></div>
+        <div class="item"><img src="img/sirulnik.png"></div>
+        <div class="item"><img src="img/povar.png"></div>
+        <div class="item"><img src="img/ovulashka.png"></div>
+        <div class="item"><img src="img/fireman.png"></div>
+        <div class="item"><img src="img/teacher.png"></div>
+        <div class="item"><img src="img/mario.png"></div>
+    </div>
+</div>
+
+<div style=" display: none">
+    <div class="alert alert-info">Пройдите, пожалуйста, тестирование</div>
+
+    <center>
+        <div style="max-width: 800px;">
+            <div class="alert alert-success test-title" style="display: none">Выберите профессию, которая Вам больше
+                нравится
+            </div>
+            <button type="button" class="x1 btn btn-success dropdown-toggle prof" id="prof">Начать тест</button>
+            <button type="button" class="x1 btn dropdown-toggle prof1" id="prof1"
+                    style="display: none; margin-left: 20px;">
+                !
+            </button>
+            <div class="result" style="display: none">
+                <div>Реалистический</div>
+                <div id="far"></div>
+                <br/>
+                <div>Интеллектуальный</div>
+                <div id="faar"></div>
+                <br/>
+                <div>Социальный</div>
+                <div id="faaar"></div>
+                <br/>
+                <div>Конвенциальный</div>
+                <div id="faaaar"></div>
+                <br/>
+                <div>Предпринимательский</div>
+                <div id="faaaaar"></div>
+                <br/>
+                <div>Артистический</div>
+                <div id="faaaaaar"></div>
+            </div>
+        </div>
+    </center>
+</div>
+</body>
+</html>
