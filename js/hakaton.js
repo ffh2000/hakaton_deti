@@ -1,9 +1,22 @@
+function showAlert(message) {
+    $('.alert')
+        .html(title)
+        .alert();
+}
+
+function showJombotrone(title, message) {
+    $('.jumbotron .title').html(title)
+    $('.jumbotron p.message').html(message)
+    $('.jumbotron').slideDown();
+
+}
+
 function showModal(title, message) {
     $('.modal .modal-content .modal-title').html(title);
     $('.modal .modal-content .modal-body').html(message);
     $('.modal').modal({
         keyboard: true
-    })
+    });
 }
 
 function onTestEnd() {
@@ -12,6 +25,24 @@ function onTestEnd() {
 }
 
 function loadMenu1() {
+    $(".menu.menu1").fadeIn();
+    $(".menu.menu1 .item")
+        .unbind()
+        .on('click', function (ev) {
+            menu1ItemClick(this, ev)
+        });
+
+    showJombotrone("Шаг выбора профессии",
+        "В данном меню ученику необходимо выбрать к какой профессии он желает двигаться в учебе.");
+}
+
+function menu1ItemClick(item, ev) {
+    $(".menu.menu1").fadeOut();
+    $(".menu.menu2").fadeOut();
+
+}
+
+function loadMenu2() {
     $(".menu").fadeIn(function () {
     });
     showModal("Шаг выбора профессии",
