@@ -122,16 +122,26 @@ function showMenu2(clickedItem) {
     var it = $(".menu.menu2 div");
     it.append("<div>Навыки, которые необходимо изучить для получения профессии</div><br>")
     var id = $(clickedItem).attr("itemid");
+    var profName = profsList[id][0];
     var img = $(clickedItem).children("img").attr("src");
     var navyki = profsList[id];
-    console.log("navyki", navyki);
     var n = navyki[1].length;
     var html = "<div style=\"font-size: 30pt;display: inline-block;\"><img src=\"" + img + "\"><br>" + navyki[0] + "</div>"+
        "<div style='display: inline-block;vertical-align: top;'>";
 
+    // var profData;
+    // while (profName != curChild[3][0]) {
+    //
+    // }
+
     for (let i = 0; i < n; i++) {
         console.log("navyki[1][i]", navyki[1][i]);
-        html += "<div style='font-size: 25pt;vertical-align: top;margin: 16px 10px 16px 30px;'>" + navyki[1][i][0] + "<br><div style='font-size: 12pt;color: #9acfea;'>" + navyki[1][i][1] + "</div></div>";
+        html += "<div style='font-size: 25pt;vertical-align: top;margin: 16px 10px 16px 30px;'>" + navyki[1][i][0] +
+            "<br><div style='font-size: 12pt;color: #9acfea;'>" + navyki[1][i][1] + "</div>" +
+            "  <div class=\"progress\">" +
+            "    <div class=\"progress-bar progress-bar-striped progress-bar-animated\" role=\"progressbar\" aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: " + 75 + "%\"></div>" +
+            "  </div>" +
+            "</div>";
     }
     html += "</div>";
     board.append(html);
