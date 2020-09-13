@@ -1,14 +1,64 @@
+var curChild;
+var
+    peoples = [
+        ["test", "Вася", "Петров", ["Доктор", 25, 90, 0]],
+        ["test1", "Илья", "М", ["Парикмахер", 33, 0]],
+    ];
+
+var
+    profsList = [
+        ["Милиционер", [
+            ["Бег", "Поможет задержать преступника"],
+            ["Юриспруденця", "Научит как правильно бить преступника"],
+            ["Взяточничество", "Приятное дополнение к зарплате"],
+        ]],
+        ["Доктор", [
+            ["Анатомия", "Для лечения"],
+            ["Математика", "Поможет считать трупы в морге"],
+            ["Тема3", "Описание 3"],
+        ]],
+        ["Парикмахер", [
+            ["Ножи", "Описание цумаывалопрвдлпор"],
+            ["Скальпы", "Сдирать скальпы с бледнолицых"],
+        ]],
+        ["Повар", [
+            ["Людоедство", "Ням-ням"],
+            ["Кипячение", "чая"],
+        ]],
+        ["Домохозяйка", [
+            ["Сериалы", "Рабыня Изаура, Богатые тоже плачут"],
+            ["Сплетни", "Под землею горд строють, так говорят на случай ядерной войны..."]
+        ]],
+        ["Пожарный", [
+            ["Поджигание", "описание"],
+            ["Плавание", "Стиль 'топор в проруби'"],
+        ]],
+        ["Учитель", [
+            ["Порка", "Как Алешу Пешкова, по субботам"],
+            ["Обучение", "Это не обязательно"]
+        ]],
+        ["Рабочий", [
+            ["Устройство лопаты", "Черенок"],
+            ["Ремонт сантехники", "Прочистка труб разного диаметра и назначения..."],
+            ["Немецкие домохозяйки", "Врачиха + сантехник = к/ф \"Афоня\""]
+        ]]
+    ];
+
+
 function showAlert(message) {
     $('.alert')
         .html(title)
         .alert();
 }
 
+function hideJombotrone() {
+    $('.jumbotron').slideUp();
+}
+
 function showJombotrone(title, message) {
     $('.jumbotron .title').html(title)
     $('.jumbotron p.message').html(message)
     $('.jumbotron').slideDown();
-
 }
 
 function showModal(title, message) {
@@ -25,6 +75,7 @@ function onTestEnd() {
 }
 
 function loadMenu1() {
+    $(".board").show();
     $(".menu.menu1").fadeIn();
     $(".menu.menu1 .item")
         .unbind()
@@ -36,17 +87,59 @@ function loadMenu1() {
         "В данном меню ученику необходимо выбрать к какой профессии он желает двигаться в учебе.");
 }
 
-function menu1ItemClick(item, ev) {
-    $(".menu.menu1").fadeOut();
-    $(".menu.menu2").fadeOut();
-
+function showLogin() {
+    $(".login-button").unbind();
+    $(".login").fadeIn(function () {
+        $(".login-input").focus();
+    });
+    $(".login-button").on("click", function (ev) {
+        ev.preventDefault();
+        var name = $(".login .login-input").val();
+        var i = 0;
+        while (peoples[i][0] != name && i < peoples.length - 1) {
+            i++;
+        }
+        if (peoples[i][0] == name) {
+            curChild = peoples[i];
+            $(".login").fadeOut(function () {
+                loadMenu1();
+            });
+        } else
+            showModal("Ошибка входа", "Данный логин не найден");
+    });
 }
 
-function loadMenu2() {
-    $(".menu").fadeIn(function () {
+function menu1ItemClick(item, ev) {
+    $(".menu.menu1").fadeOut(function () {
+        hideJombotrone();
+        $(".menu.menu1").unbind();
+        showMenu2(item);
     });
-    showModal("Шаг выбора профессии",
-        "В данном меню ученику необходимо выбрать к какой профессии он желает двигаться в учебе.");
+}
+
+function showMenu2(clickedItem) {
+    var board = $(".menu.menu2");
+    var it = $(".menu.menu2 div");
+    it.append("<div>Навыки, которые необходимо изучить для получения профессии</div><br>")
+    var id = $(clickedItem).attr("itemid");
+    var img = $(clickedItem).children("img").attr("src");
+    var navyki = profsList[id];
+    console.log("navyki", navyki);
+    var n = navyki[1].length;
+    var html = "<div style=\"font-size: 30pt;display: inline-block;\"><img src=\"" + img + "\"><br>" + navyki[0] + "</div>"+
+       "<div style='display: inline-block;vertical-align: top;'>";
+
+    for (let i = 0; i < n; i++) {
+        console.log("navyki[1][i]", navyki[1][i]);
+        html += "<div style='font-size: 25pt;vertical-align: top;margin: 16px 10px 16px 30px;'>" + navyki[1][i][0] + "<br><div style='font-size: 12pt;color: #9acfea;'>" + navyki[1][i][1] + "</div></div>";
+    }
+    html += "</div>";
+    board.append(html);
+    board.fadeIn(function () {
+        showJombotrone("Выбранная профессия/цель", "Здесь отображается выбранная профессия, " +
+            "какие навыки надо изучить и степень готовности<br>" +
+            "изучения навыка, выстваляемая преподавателем");
+    });
 }
 
 var prof = [
@@ -350,5 +443,6 @@ $(document).ready(function () {
             onTestEnd()
     });
 
-    loadMenu1();
+    showLogin();
+    // loadMenu1();
 });

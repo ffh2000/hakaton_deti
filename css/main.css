@@ -25,6 +25,7 @@ div.board {
     height: 706px;
     padding: 16px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    display: none;
 }
 
 .menu {
@@ -43,3 +44,51 @@ div.board {
     cursor: pointer;
     filter: drop-shadow(0px 0px 24px rgba(250, 255, 49, 0.3));
 }
+/*  LOGIN  */
+.login {
+    display: none;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    width: 1100px;
+    height: 636px;
+}
+
+.login div.bg {
+    background: url("../img/bg.jpg") no-repeat center top;
+    padding: 16px;
+    width: 1100px;
+    height: 636px;
+    opacity: 0.2;
+    position: absolute;
+}
+
+.login div.login {
+    margin-left: 150px;
+    margin-top: 80px;
+    font-size: 25pt;
+    color: #256474;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+    opacity: 1;
+    position: absolute;
+}
+
+.login input.login-input {
+    background: white;
+    padding: 16px;
+    opacity: 1;
+    color: #256474;
+    border: 3px solid #256474;
+    border-radius: 20px;
+}
+/*  END LOGIN  */
+
+/*  MENU2 */
+.menu.menu2 {
+    text-shadow: 0 0 20px #f5f0f0;
+    position: absolute;
+    color: white;
+    font-size: 25pt;
+    opacity: 1;
+ }
+/*  ENDMENU2 */
